@@ -42,6 +42,8 @@ router.get('/orders', orderService.getOrders);
 //get request by Id for specific food 
 router.get('/orders/:_id', orderService.getOrderById);
 
+router.get('/completeOrder/:_id', orderService.getCompleteOrder);
+
 //get request for the stores
 router.get('/stores', storeService.getStores);
 

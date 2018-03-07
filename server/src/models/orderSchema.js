@@ -6,14 +6,15 @@ var objectId = Schema.ObjectId;
 
 var Orders = new Schema({
 	id : objectId,
-	store_id: objectId,
+	store_id: {type: objectId, ref: 'Stores' },
 	users: [{ 
-		user_id: objectId,
+		user_id: {type: objectId, ref: 'Users' },
 		food: [{
 			food_id: {type: String, require: true},
 			quantity: {type: Number, require: true},
 			price: {type: Number, require: true}
-		 	}]}],
+		 	}]
+		 }],
 	total: {type: Number},
 	date: {type: Date, require: true}
 })
