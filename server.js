@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
@@ -15,12 +16,15 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 //api location
+app.use(cors({origin:true,credentials: true}));
+
 app.use('/api', api);
 
 // Send all other requests to the vue app
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'index.html'));
 });
+
 
 // Set port
 const port = process.env.PORT || '3000';
