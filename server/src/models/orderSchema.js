@@ -11,6 +11,7 @@ var Orders = new Schema({
 		user_id: {type: objectId, ref: 'Users' },
 		food: [{
 			food_id: {type: String, require: true},
+			description: {type: String, require: true},
 			quantity: {type: Number, require: true},
 			price: {type: Number, require: true}
 		 	}]

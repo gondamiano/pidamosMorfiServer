@@ -50,4 +50,6 @@ router.get('/stores', storeService.getStores);
 //get the store by id
 router.get('/stores/:store_id', storeService.getStoreById);
 
+router.put('/insertUserInOrder', orderService.insertUserInOrder);
+
 module.exports = router;
