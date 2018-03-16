@@ -1,5 +1,17 @@
 const Order = require('../models/orderSchema');
 
+class UserOrder {
+	constructor(userId, foodId, description, quantity, price) {
+		this.user_id = userId;
+		this.food = [{
+			food_id : foodId,
+			description : description,
+			quantity : quantity,
+			price : price
+		}];
+	}
+}
+
 const orderService = {
 
 	getOrders : (req, res) => {
@@ -39,7 +51,9 @@ const orderService = {
 		Order.findById(req.body._id)
 		.then((order) => {
 			console.log( "HASTA ACA LLEGA ", order.users);
-			order.users.push({ user_id : req.body.user_id , food : [{ food_id : req.body.food[0].food_id , description:  req.body.food[0].description, quantity : req.body.food[0].quantity, price: req.body.food[0].price }]})
+			var userOrder = new UserOrder(req.body.user_id, req.body.food[0].food_id, req.body.food[0].description, req.body.food[0].quantity, req.body.food[0].price);
+			console.log(userOrder);
+			order.users.push(userOrder)
 			order.save(function (err, res) {
 				if(err) console.log(err);
 				else console.log(res);
