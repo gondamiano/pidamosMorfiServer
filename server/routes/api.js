@@ -50,6 +50,19 @@ router.get('/stores', storeService.getStores);
 //get the store by id
 router.get('/stores/:store_id', storeService.getStoreById);
 
+// insert user in specefic order
 router.put('/insertUserInOrder', orderService.insertUserInOrder);
+
+// insert store document
+router.put('/stores/insertStore', storeService.insertStore);
+
+// update store document
+router.put('/stores/updateStore', storeService.updateStore);
+
+// delete type of food from store
+router.put('/stores/deleteFoodFromStore', storeService.deleteFoodFromStore);
+
+//delete a store document
+router.delete('/deleteStore/:_id', storeService.deleteStore);
 
 module.exports = router;

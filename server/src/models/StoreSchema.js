@@ -10,7 +10,6 @@ var Stores = new Schema({
 	location: {type: String, require: true},
 	phoneNumber: {type: Number },
 	typeOf: [{
-		food_id: {type: String, unique: true},
 		foodName: {type: String, unique: true},
 		price: {type: Number}
 	}]
